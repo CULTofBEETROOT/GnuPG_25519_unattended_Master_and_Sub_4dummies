@@ -1,5 +1,5 @@
-# GnuPG_25519_unattended_Master_and_Sub_4dummies
-unattended GnuPG GPG 25519 series MASTER and ALL subkeys no RSA 
+# Root-orchestrated_USB-key_LUKS-storage_reader_or_encryptor_4_non-root_User_GPG_Master-_sub-_keys_Generator.
+Root-orchestrated, USB-key LUKS-storage, 25519-family, reader or encryptor, for non-root User GPG Master- & sub-, keys Generator. 
 
 # this code is transitory and untidy, humble.
 
