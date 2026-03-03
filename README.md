@@ -9,7 +9,7 @@ Root-orchestrated, USB-key LUKS-storage, 25519-family, reader or encryptor, for 
 a) The scripts have to be run in the order lister : FIRST, then SECOND, then THIRD (do not skip when a step fails)
 
 
-b) step FIRST, if you eg. have these 3 files in your    Downloads    directory :
+b) step FIRST, if you eg. have these 3 files in your    Downloads    directory, root user or sudo :
 
 bash /home/$USER/Downloads/FIRST_GnuPG_2p5+_required.sh
 
