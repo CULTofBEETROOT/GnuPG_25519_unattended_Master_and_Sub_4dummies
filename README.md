@@ -11,7 +11,7 @@ a) The scripts have to be run in the order lister : FIRST, then SECOND, then THI
 
 b) if you eg. have these 3 files in your    Downloads    directory :
 
-bash /home/$USER/Downloads/FIRST_GnuPG_2p5_required.sh
+bash /home/$USER/Downloads/FIRST_GnuPG_2p5+_required.sh
 
 
 c) step to is started in root mode with : 
