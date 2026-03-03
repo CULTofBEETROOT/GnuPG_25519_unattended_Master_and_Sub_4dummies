@@ -1,0 +1,136 @@
+#!/bin/bash
+# =================================================================
+# Root-orchestrated, USB-key LUKS-storage, reader or encryptor, for
+# non-root User GPG Master- & sub-, keys Generator.
+# =================================================================
+
+
+echo " ================================================================= "
+echo " Root-orchestrated, USB-key LUKS-storage, reader or encryptor, for "
+echo " non-root User GPG Master- & sub-, keys Generator.                 "
+echo " ================================================================= "
+
+set -Eeuo pipefail
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export DEBIAN_FRONTEND=noninteractive
+echo ""
+echo " ----------------------------------------------------------------- "
+echo "                  0. ROOT CHECK                          "
+if [[ "$EUID" -ne 0 ]]; then
+echo "ERROR: This script must be run as root."
+else 
+echo 'For help, you key will have LABEL="🐧🔓"'
+fi
+echo "                                                            ... ok "
+
+install_required_packages() {
+echo "                  2. INSTALL REQUIRED PACKAGES                "
+    REQUIRED_PKGS=(
+        gnupg gpg gpg-agent dirmngr pinentry-curses pwgen cryptsetup util-linux passwd sudo
+    )
+    echo "[+] Checking required packages..."
+    for pkg in "${REQUIRED_PKGS[@]}"; do
+        dpkg -s "$pkg" &>/dev/null || {
+            echo "[+] Installing $pkg ..."
+            apt-get update -y
+            apt-get install -y "$pkg"
+        }
+    done
+}
+
+
+create_or_mount_luks_usbkey() {
+   echo "                                                            ... ok "
+   echo "                  3. LUKS USB setup (ROOT-USER) and/or mount " 
+   echo " ----------------------------------------------------------------- " 
+   echo ""
+   echo ""
+   echo ""
+   echo "$(lsblk -f)"
+   echo ""
+   echo ""
+
+   read -p "!Be sure to UNplug any other storage device AND plug your target usbKey! 
+   ..then type either :  
+   -> LUKS to (re-)format! the device in luks 
+   or 
+   -> OPEN to use the device (you already have a luks installed). 
+   > " gogo
+
+   if [[ "$gogo" != "OPEN" ]] && [[ "$gogo" != "LUKS" ]] ; then 
+      echo "failed reply: cancelling all."
+      echo ""
+   elif [[ "$gogo" = "OPEN" ]] && [[ "$gogo" != "LUKS" ]] ; then 
+      if [[ "$(ls /media/ | grep -v -e 'cdrom' -e 'cdrom0')" != "" ]]; then 
+		prevUser=$(ls /media/ | grep -v -e 'cdrom' -e 'cdrom0'); 
+		usbdeviceMpointName=$(ls /media/$prevUser/); 
+		usbdeviceLuksName=$(ls /dev/mapper/ 2>/dev/null | grep '^luks-' || true);
+		sudo umount "/mnt/usb_gpg" 2>/dev/null || true;
+		sudo umount "/media/$prevUser/$usbdeviceMpointName" 2>/dev/null || true;
+		sudo cryptsetup luksClose "$usbdeviceLuksName" 2>/dev/null || true;
+		sudo cryptsetup luksClose myusb_key  2>/dev/null || true;
+      elif [[ "$(ls /media/ | grep -v -e 'cdrom' -e 'cdrom0')" = "" ]]; then
+		echo "A non-root user must be created to run this code."
+      fi
+      read -p "Enter the : 
+      -> device DRIVE eg. /dev/sdX  (NO /dev/sdX1 partition!)  path: 
+      > " USB_DEV
+      # Step 6: Open any present LUKS container
+      sudo cryptsetup luksOpen "$USB_DEV" myusb_key
+      # Step 7: Create mount point /mnt/usb_gpg
+      sudo mkdir -p /mnt/usb_gpg
+      # Step 8: mount @ /mnt/usb_gpg
+      sudo mount /dev/mapper/myusb_key /mnt/usb_gpg
+      echo "device mount point /mnt/usb_pgp/ : "
+      echo "$(ls /mnt/usb_gpg)"
+      
+    elif [[ "$gogo" != "OPEN" ]] && [[ "$gogo" = "LUKS" ]] ; then
+      read -p "Enter the : 
+      -> device drive path (e.g. /dev/sdc) 
+      not a partition path (not! /dev/sdc1)  
+      > " USB_DEV
+      # Step 0: clear previous mess-ups
+      sudo umount "/mnt/usb_gpg" 2>/dev/null || true;
+      prevUser=$(ls /media/ | grep -v -e 'cdrom' -e 'cdrom0'); 
+      usbdeviceMpointName=$(ls /media/$prevUser/); 
+      usbdeviceLuksName=$(ls /dev/mapper/ 2>/dev/null | grep '^luks-' || true);
+      sudo umount "/media/$prevUser/$usbdeviceMpointName" 2>/dev/null || true;
+      sudo cryptsetup luksClose "$usbdeviceLuksName" 2>/dev/null || true;
+      sudo cryptsetup luksClose myusb_key  2>/dev/null || true;
+      sudo umount myusb_key 2>/dev/null || true;
+      sudo cryptsetup luksClose myusb_key 2>/dev/null || true;
+      sudo dmsetup remove myusb_key 2>/dev/null || true;
+      # Step 1: Wipe the usbkey device
+      sudo wipefs -a "$USB_DEV" || echo "remove, replug device and retry please";
+      # Step 2: LUKS Format new usbkey
+      sudo cryptsetup luksFormat "$USB_DEV" --label "$(printf '\U1F427\U1F513')"
+      # Step 3: Open the new LUKS container
+      sudo cryptsetup luksOpen "$USB_DEV" myusb_key
+      # Step 4: Format the new luks as EXT4
+      # sudo mkfs.ext4 /dev/mapper/usb_gpg
+      sudo mkfs.ext4 /dev/mapper/myusb_key
+      # Step 5: Close the new LUKS container
+      sudo cryptsetup luksClose myusb_key 2>/dev/null || true;
+      # Step 6: Open any present LUKS container
+      sudo cryptsetup luksOpen "$USB_DEV" myusb_key
+      # Step 7: Create mount point /mnt/usb_gpg
+      sudo mkdir -p /mnt/usb_gpg
+      # Step 8: mount @ /mnt/usb_gpg
+      sudo mount /dev/mapper/myusb_key /mnt/usb_gpg
+    fi 
+}
+
+
+main() {
+    echo "                  1. MAIN FUNCTION                                 "
+    echo "                                                            ... ok "
+    install_required_packages
+    create_or_mount_luks_usbkey
+    echo "========================================="
+    echo "device mount point : ls /mnt/usb_gpg  "
+    echo "$(ls /mnt/usb_gpg)"
+    echo ""
+    echo "close with : "
+    echo 'sudo umount "/mnt/usb_gpg"; sudo cryptsetup luksClose myusb_key'
+}
+main
