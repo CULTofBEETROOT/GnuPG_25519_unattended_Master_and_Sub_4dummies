@@ -20,7 +20,8 @@ bash /home/$USER/Downloads/SECOND_create_usbkey_LUKS_toKeepGnuPGKeys.sh
 
 
 d) step THIRD is started in root mode with :
-
+(You could have to chmod higher like 777. Remember, theoretically you run all these on a old hardware fresh debian install without internet during the process. 
+chmod 777 /home/$USER/Downloads/THIRD_GnuPG_MASTER_and_subkeys_save_on_USBdevice_LUKS.sh; /home/$USER/Downloads/THIRD_GnuPG_MASTER_and_subkeys_save_on_USBdevice_LUKS.sh or restrictive:.. ).
 chmod +x /home/$USER/Downloads/THIRD_GnuPG_MASTER_and_subkeys_save_on_USBdevice_LUKS.sh; /home/$USER/Downloads/THIRD_GnuPG_MASTER_and_subkeys_save_on_USBdevice_LUKS.sh
 
 
