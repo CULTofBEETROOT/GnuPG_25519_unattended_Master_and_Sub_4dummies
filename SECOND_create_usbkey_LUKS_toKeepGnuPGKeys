@@ -26,7 +26,7 @@ echo "                                                            ... ok "
 install_required_packages() {
 echo "                  2. INSTALL REQUIRED PACKAGES                "
     REQUIRED_PKGS=(
-        gnupg gpg gpg-agent dirmngr pinentry-curses pwgen cryptsetup util-linux passwd sudo
+        gnupg gpg gpg-agent dirmngr pinentry-curses pwgen cryptsetup util-linux passwd sudo expect
     )
     echo "[+] Checking required packages..."
     for pkg in "${REQUIRED_PKGS[@]}"; do
