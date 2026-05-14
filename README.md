@@ -1,5 +1,5 @@
 
-simpler README for GnuPG 25519 Unattended Master and Sub Keys Generator
+# simpler README for GnuPG 25519 Unattended Master and Sub Keys Generator
 
 Overview
 This repository provides a set of scripts for generating GPG Master and subkeys using a USB key with LUKS encryption. The scripts are designed for non-root users but require root access for certain operations. This setup is tailored for Debian Trixie and is intended for users who may be working on older hardware without internet access during the process.
@@ -38,15 +38,14 @@ By following these steps, you can securely generate and store your GPG Master an
 
 
 
-README more ADVANCED users
+# README more ADVANCED users
 
-
-# Root-orchestrated_USB-key_LUKS-storage_reader_or_encryptor_4_non-root_User_GPG_Master-_sub-_keys_Generator.
+Root-orchestrated_USB-key_LUKS-storage_reader_or_encryptor_4_non-root_User_GPG_Master-_sub-_keys_Generator.
 Root-orchestrated, USB-key LUKS-storage, 25519-family, reader or encryptor, for non-root User GPG Master- & sub-, keys Generator. 
 
-# this code is transitory and untidy, humble.
+this code is transitory and untidy, humble.
 
-# build with Debian trixie in mind, root access.
+build with Debian trixie in mind, root access.
 
 
 a) The scripts have to be run in the order lister : FIRST, then SECOND, then THIRD (do not skip when a step fails)
