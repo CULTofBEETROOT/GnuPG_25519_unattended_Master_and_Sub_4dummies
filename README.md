@@ -22,17 +22,22 @@ THIRD.sh
 
 # FOR BATCH PRODUCTION (better!)
 
- * If you have multiple email addresses for which you want to generate GPG keys, download:
- 
- run as root user or with sudo the commands:
- 
-bash /home/$USER/Downloads/FIRST.sh;
+ * If you have multiple email addresses for which you want to generate GPG keys run as root user or with sudo the commands:
 
-bash /home/$USER/Downloads/SECOND.sh;
+```bash
+sudo bash /home/$USER/Downloads/FIRST.sh;
+sudo bash /home/$USER/Downloads/SECOND.sh;
+```
 
- * Create two files, one with a column of owners, a second with a column of email addresses and feed them in the run:
+ * Create two files:
+ one with a column of owners, 
+ a second with a column of email addresses 
 
+and feed them subtiruting the argument fields in the patern:
+
+```bash
 /home/$USER/Downloads/batchproduction_ofTHIRD.sh <path/to/and/ownerfile.txt> <path/to/and/addressfile.txt>;
+```
 
 This last script allows you to input lists of emails and their respective owners, producing individual bash scripts for each email address.
  * When you run the generated individual scripts, they will create GPG keys stored on your LUKS-encrypted USB key. Important: OpenGPG recommends that you immediately use and then delete any self-unencrypted private keys to avoid storing sensitive information.
@@ -51,25 +56,32 @@ Step 1: Run the First Script
 Step 2: Create the USB Key with LUKS
  1. Start this step in root mode:
 
+```bash
  bash /home/$USER/Downloads/SECOND.sh
+```
 
 Step 3: Save GPG Master and Subkeys on the USB Device
  1. Start this step in root mode. You may need to change the permissions of the script to make it executable.
  Use the following command:
 
+```bash
  chmod +x /home/$USER/Downloads/THIRD.sh
+```
 
  2. Then, run the script:
 
+```bash
  /home/$USER/Downloads/THIRD.sh
-
+```
 
 Final Step: Safely Unmount the USB Device
 
 After successfully completing all steps, ensure you safely unmount your USB LUKS device to prevent potential issues when reconnecting it:
 
+```bash
 sudo umount "/mnt/usb_gpg"
 sudo cryptsetup luksClose myusb_key
+```
 
 or the next time you plug your device, you potentially would experience difficulties.
 
