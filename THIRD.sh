@@ -1,4 +1,5 @@
 #!/usr/bin/expect -f
+# GnuPG MASTER and subkeys save on USBdevice LUKS.sh
 
 # ==========================================================
 # CONFIGURATION
