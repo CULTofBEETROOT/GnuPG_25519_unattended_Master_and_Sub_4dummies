@@ -63,6 +63,7 @@ Step 3: Save GPG Master and Subkeys on the USB Device
 
 
 Final Step: Safely Unmount the USB Device
+
 After successfully completing all steps, ensure you safely unmount your USB LUKS device to prevent potential issues when reconnecting it:
 
 sudo umount "/mnt/usb_gpg"
@@ -72,6 +73,7 @@ or the next time you plug your device, you potentially would experience difficul
 
 
 Conclusion
+
 By following these steps, you can securely generate and store your GPG Master and subkeys on a LUKS-encrypted USB key. Always remember to handle your private keys with care and follow best practices for security. If you have any questions or issues, please refer to the documentation or seek assistance from the community.
 
 
