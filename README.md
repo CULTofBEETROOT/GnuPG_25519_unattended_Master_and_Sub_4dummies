@@ -12,7 +12,7 @@ Steps to Follow
 Step 1: Run the First Script
  1. Open a terminal.
  2. Execute the following command as the root user or with sudo:
- bash /home/$USER/Downloads/FIRST_GnuPG_2p5+_required.sh
+ bash /home/$USER/Downloads/FIRST_GnuPG_upgrade.sh
 Step 2: Create the USB Key with LUKS
  1. Start this step in root mode:
  bash /home/$USER/Downloads/SECOND_create_usbkey_LUKS_toKeepGnuPGKeys.sh
