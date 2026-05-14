@@ -8,10 +8,14 @@ This repository provides a set of scripts for generating GPG Master and subkeys 
 Important Notes
  * Execution Order: The scripts must be run in the specified order: FIRST, SECOND, and THIRD. Do not skip any steps, even if a step fails.
  * Environment: Ensure you have the necessary files:
+
 FIRST.sh 
+
 SECOND.sh
+
 THIRD.sh 
- (optinally : batchproduction_ofTHIRD.sh)
+
+(optinally : batchproduction_ofTHIRD.sh)
  
  ...in your Downloads directory before starting.
 
@@ -23,7 +27,9 @@ THIRD.sh
  run as root user or with sudo the commands:
  
 bash /home/$USER/Downloads/FIRST.sh;
+
 bash /home/$USER/Downloads/SECOND.sh;
+
 /home/$USER/Downloads/batchproduction_ofTHIRD.sh;
 
 This last script allows you to input lists of emails and their respective owners, producing individual bash scripts for each email address.
