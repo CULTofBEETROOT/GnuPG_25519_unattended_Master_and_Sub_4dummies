@@ -1,4 +1,5 @@
 #!/bin/bash
+# FIRST : GnuPG upgrade
 set -euo pipefail
 
 # -----------------------------------
