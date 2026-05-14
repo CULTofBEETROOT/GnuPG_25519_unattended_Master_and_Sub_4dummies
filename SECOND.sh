@@ -2,6 +2,7 @@
 # =================================================================
 # Root-orchestrated, USB-key LUKS-storage, reader or encryptor, for
 # non-root User GPG Master- & sub-, keys Generator.
+# SECOND : create usbkey LUKS to Keep GnuPG Keys
 # =================================================================
 
 
