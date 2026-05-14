@@ -30,7 +30,9 @@ bash /home/$USER/Downloads/FIRST.sh;
 
 bash /home/$USER/Downloads/SECOND.sh;
 
-/home/$USER/Downloads/batchproduction_ofTHIRD.sh;
+ * Create two files, one with a column of owners, a second with a column of email addresses and feed them in the run:
+
+/home/$USER/Downloads/batchproduction_ofTHIRD.sh <path/to/and/ownerfile.txt> <path/to/and/addressfile.txt>;
 
 This last script allows you to input lists of emails and their respective owners, producing individual bash scripts for each email address.
  * When you run the generated individual scripts, they will create GPG keys stored on your LUKS-encrypted USB key. Important: OpenGPG recommends that you immediately use and then delete any self-unencrypted private keys to avoid storing sensitive information.
