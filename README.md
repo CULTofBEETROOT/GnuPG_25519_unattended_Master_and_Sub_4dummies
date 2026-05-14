@@ -8,9 +8,9 @@ This repository provides a set of scripts for generating GPG Master and subkeys 
 Important Notes
  * Execution Order: The scripts must be run in the specified order: FIRST, SECOND, and THIRD. Do not skip any steps, even if a step fails.
  * Environment: Ensure you have the necessary files:
- FIRST.sh 
- SECOND.sh
- THIRD.sh 
+FIRST.sh 
+SECOND.sh
+THIRD.sh 
  (optinally : batchproduction_ofTHIRD.sh)
  
  ...in your Downloads directory before starting.
@@ -22,9 +22,9 @@ Important Notes
  
  run as root user or with sudo the commands:
  
- bash /home/$USER/Downloads/FIRST.sh;
- bash /home/$USER/Downloads/SECOND.sh;
- /home/$USER/Downloads/batchproduction_ofTHIRD.sh;
+bash /home/$USER/Downloads/FIRST.sh;
+bash /home/$USER/Downloads/SECOND.sh;
+/home/$USER/Downloads/batchproduction_ofTHIRD.sh;
 
 This last script allows you to input lists of emails and their respective owners, producing individual bash scripts for each email address.
  * When you run the generated individual scripts, they will create GPG keys stored on your LUKS-encrypted USB key. Important: OpenGPG recommends that you immediately use and then delete any self-unencrypted private keys to avoid storing sensitive information.
