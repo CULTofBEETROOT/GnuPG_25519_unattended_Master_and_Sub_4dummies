@@ -1,6 +1,5 @@
-# GnuPG 25519 Unattended Master and Sub Keys Generator & USB-Luks (gpg-key storage) dongle-Formater.
-(simpler README)
-
+# GnuPG 25519 Unattended Master and Sub Keys Generator 
+# & USB-Luks (gpg-key storage) dongle-Formater.
 
 Overview
 This repository provides a set of scripts for generating GPG Master and subkeys using a USB key with LUKS encryption. The scripts are designed for non-root users but require root access for certain operations. This setup is tailored for Debian Trixie and is intended for users who may be working on older hardware without internet access during the process.
