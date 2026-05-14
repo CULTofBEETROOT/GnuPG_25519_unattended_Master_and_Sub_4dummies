@@ -12,16 +12,16 @@ Steps to Follow
 Step 1: Run the First Script
  1. Open a terminal.
  2. Execute the following command as the root user or with sudo:
- bash /home/$USER/Downloads/FIRST_GnuPG_upgrade.sh
+ bash /home/$USER/Downloads/FIRST.sh
 Step 2: Create the USB Key with LUKS
  1. Start this step in root mode:
- bash /home/$USER/Downloads/SECOND_create_usbkey_LUKS_toKeepGnuPGKeys.sh
+ bash /home/$USER/Downloads/SECOND.sh
 Step 3: Save GPG Master and Subkeys on the USB Device
  1. Start this step in root mode. You may need to change the permissions of the script to make it executable. Use the 
 following command:
- chmod +x /home/$USER/Downloads/THIRD_GnuPG_MASTER_and_subkeys_save_on_USBdevice_LUKS.sh
+ chmod +x /home/$USER/Downloads/THIRD.sh
  2. Then, run the script:
- /home/$USER/Downloads/THIRD_GnuPG_MASTER_and_subkeys_save_on_USBdevice_LUKS.sh
+ /home/$USER/Downloads/THIRD.sh
 
 ALTERNATIVE FOR BATCH PRODUCTION
  * If you have multiple email addresses for which you want to generate GPG keys, consider using the batchproduction_ofTHIRD.sh script. This script allows you to input lists of emails and their respective owners, producing individual bash scripts for each email address.
@@ -43,31 +43,28 @@ By following these steps, you can securely generate and store your GPG Master an
 Root-orchestrated_USB-key_LUKS-storage_reader_or_encryptor_4_non-root_User_GPG_Master-_sub-_keys_Generator.
 Root-orchestrated, USB-key LUKS-storage, 25519-family, reader or encryptor, for non-root User GPG Master- & sub-, keys Generator. 
 
-this code is transitory and untidy, humble.
-
 build with Debian trixie in mind, root access.
-
 
 a) The scripts have to be run in the order lister : FIRST, then SECOND, then THIRD (do not skip when a step fails)
 
 
 b) step FIRST, if you eg. have these 3 files in your    Downloads    directory, root user or sudo :
 
-bash /home/$USER/Downloads/FIRST_GnuPG_2p5+_required.sh
+bash /home/$USER/Downloads/FIRST.sh
 
 
 c) step SECOND is started in root mode with : 
 
-bash /home/$USER/Downloads/SECOND_create_usbkey_LUKS_toKeepGnuPGKeys.sh
+bash /home/$USER/Downloads/SECOND.sh
 
 
 d1) step THIRD is started in root mode with :
 (You could have to chmod higher like 777. Remember, theoretically you run all these on a old hardware fresh debian install without internet during the process. 
-chmod 777 /home/$USER/Downloads/THIRD_GnuPG_MASTER_and_subkeys_save_on_USBdevice_LUKS.sh; 
-/home/$USER/Downloads/THIRD_GnuPG_MASTER_and_subkeys_save_on_USBdevice_LUKS.sh or restrictive:.. ).
+chmod 777 /home/$USER/Downloads/THIRD.sh; 
+/home/$USER/Downloads/THIRD.sh or restrictive:.. ).
 
-chmod +x /home/$USER/Downloads/THIRD_GnuPG_MASTER_and_subkeys_save_on_USBdevice_LUKS.sh; 
-/home/$USER/Downloads/THIRD_GnuPG_MASTER_and_subkeys_save_on_USBdevice_LUKS.sh
+chmod +x /home/$USER/Downloads/THIRD.sh; 
+/home/$USER/Downloads/THIRD.sh
 
 d2) A better practice and batch production alternative (for d1) is to list your emails and their owners in repsctive files used by running the batchproduction_ofTHIRD.sh bash script.
 
