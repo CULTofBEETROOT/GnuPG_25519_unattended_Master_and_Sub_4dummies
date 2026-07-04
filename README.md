@@ -20,7 +20,7 @@ THIRD.sh
  ...in your Downloads directory before starting.
 
 
-# FOR BATCH PRODUCTION (better!)
+# FOR BATCH PRODUCTION (recommended)
 
  * If you have multiple email addresses for which you want to generate GPG keys run as root user or with sudo the commands:
 
