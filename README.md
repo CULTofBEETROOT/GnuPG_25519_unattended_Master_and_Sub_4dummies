@@ -47,7 +47,7 @@ This last script allows you to input lists of emails and their respective owners
 
 Steps to Follow
 
-Step 1: Run the First Script
+STEP 1: Run the First Script
  1. Open a terminal.
  2. Execute the following command as the root user or with sudo:
 
@@ -55,14 +55,14 @@ Step 1: Run the First Script
  bash /home/$USER/Downloads/FIRST.sh
 ```
 
-Step 2: Create the USB Key with LUKS
+STEP 2: Create the USB Key with LUKS
  1. Start this step in root mode:
 
 ```bash
  bash /home/$USER/Downloads/SECOND.sh
 ```
 
-Step 3: Save GPG Master and Subkeys on the USB Device
+STEP 3: Save GPG Master and Subkeys on the USB Device
  1. Start this step in root mode. You may need to change the permissions of the script to make it executable.
  Use the following command:
 
@@ -76,7 +76,7 @@ Step 3: Save GPG Master and Subkeys on the USB Device
  /home/$USER/Downloads/THIRD.sh
 ```
 
-Final Step: Safely Unmount the USB Device
+FINAL STEP: Safely Unmount the USB Device
 
 After successfully completing all steps, ensure you safely unmount your USB LUKS device to prevent potential issues when reconnecting it:
 
