@@ -20,7 +20,7 @@ process_files() {
         fi
 
         # Create a script for the current ownername
-        sed "s/someUserRealName/${ownername}/" /home/$USER/Downloads/THIRD.sh > /home/vzv/Downloads/$ownername.sh
+        sed "s/someUserRealName/${ownername}/" /home/$USER/Downloads/THIRD.sh > /home/$USER/Downloads/$ownername.sh
         
         # Update the file with user-specific gnupg path
         sed -i "s/\$USER_HOME\/.gnupg/\$USER_HOME\/.gnupg${ownername}/" /home/$USER/Downloads/$ownername.sh
