@@ -29,7 +29,7 @@ process_files() {
         chmod 777 /home/$USER/Downloads/"$ownername.sh"
 
         # Update the email in the file
-        sed "s/some.body@example.com/${mlddrss}/" /home/$USER/Downloads/$ownername.sh > /home/vzv/Downloads/$mlddrss.sh
+        sed "s/some.body@example.com/${mlddrss}/" /home/$USER/Downloads/$ownername.sh > /home/$USER/Downloads/$mlddrss.sh
         
         # Remove the temporary file
         rm /home/$USER/Downloads/$ownername.sh
