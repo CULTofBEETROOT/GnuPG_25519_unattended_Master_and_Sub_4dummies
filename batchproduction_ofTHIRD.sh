@@ -40,14 +40,19 @@ process_files() {
         # Export Keys locally
         mkdir -p /home/$USER/Downloads/myKeys;
         chmod 777 /home/$USER/Downloads/myKeys;
-        sed -i 's/exit//' /home/$USER/Downloads/"$mlddrss.sh"
-        echo "gpg --homedir /root/gpg/.gnupg$ownername --export --armor $mlddrss > /home/$USER/Downloads/myKeys/$mlddrss_public.asc" >>  /home/$USER/Downloads/"$mlddrss.sh"
-        echo "gpg --homedir /root/gpg/.gnupg$ownername --export-secret-keys --armor $mlddrss > /home/$USER/Downloads/myKeys/$mlddrss_secret.asc" >>  /home/$USER/Downloads/"$mlddrss.sh"
-        echo "exit" >> /home/$USER/Downloads/"$mlddrss.sh"
+        mkdir -p /home/$USER/Downloads/runEmails;
+        chmod 777 /home/$USER/Downloads/runEmails;
+        sed 's/exit//' /home/$USER/Downloads/"$mlddrss.sh" /home/$USER/Downloads/runEmails/"$mlddrss.sh" 
+        echo "gpg --homedir /root/gpg/.gnupg$ownername --export --armor $mlddrss > /home/$USER/Downloads/myKeys/$mlddrss_public.asc" >>  /home/$USER/Downloads/runEmails/"$mlddrss.sh"
+        echo "gpg --homedir /root/gpg/.gnupg$ownername --export-secret-keys --armor $mlddrss > /home/$USER/Downloads/myKeys/$mlddrss_secret.asc" >>  /home/$USER/Downloads/runEmails/"$mlddrss.sh"
+        echo "exit" >> /home/$USER/Downloads/runEmails/"$mlddrss.sh"
 
         echo "Processed owner: $ownername, email: $mlddrss"
         echo "use your keys form /home/$USER/Downloads/myKeys and eventually delete this directory!"
     done
+    
+    for f in /home/$USER/Downloads/runEmails/*.sh; do "$f" ; done
+
 }
 
 # Call the function with the two input files
