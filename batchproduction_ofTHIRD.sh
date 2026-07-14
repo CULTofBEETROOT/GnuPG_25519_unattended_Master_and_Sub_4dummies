@@ -52,7 +52,7 @@ process_files() {
     done
     
     for f in /home/$USER/Downloads/runEmails/*.sh; do "$f" ; done
-
+    mv /root/gpg/.gnupg* /mnt/usb_gpg/
 }
 
 # Call the function with the two input files
