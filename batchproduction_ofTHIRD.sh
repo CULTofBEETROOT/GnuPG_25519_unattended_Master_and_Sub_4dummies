@@ -50,7 +50,7 @@ process_files() {
         echo "Processed owner: $ownername, email: $mlddrss"
         echo "use your keys from /home/$USER/Downloads/myKeys and eventually delete this directory!"
     done
-    
+    chmod -R 700 /home/$USER/Downloads/runEmails/
     for f in /home/$USER/Downloads/runEmails/*.sh; do "$f" ; done
     mv /root/gpg/.gnupg* /mnt/usb_gpg/
 }
