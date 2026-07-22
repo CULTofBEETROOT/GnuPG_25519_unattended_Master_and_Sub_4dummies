@@ -48,7 +48,7 @@ process_files() {
         echo "exit" >> /home/$USER/Downloads/runEmails/"$mlddrss.sh"
 
         echo "Processed owner: $ownername, email: $mlddrss"
-        echo "use your keys form /home/$USER/Downloads/myKeys and eventually delete this directory!"
+        echo "use your keys from /home/$USER/Downloads/myKeys and eventually delete this directory!"
     done
     
     for f in /home/$USER/Downloads/runEmails/*.sh; do "$f" ; done
